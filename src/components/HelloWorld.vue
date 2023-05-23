@@ -6,6 +6,11 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
+    <h2>Inicie Sesion o Registrese</h2>
+    <nav>
+      <router-link to="/Login">Log in</router-link> |
+      <router-link to="/Registrarse">Sign Up</router-link>
+    </nav>
     <h3>Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
