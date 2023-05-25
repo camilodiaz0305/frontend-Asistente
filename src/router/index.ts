@@ -20,7 +20,7 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/Login',
-    name: 'Log in',
+    name: 'Login',
     component: () => import('../views/LoginView.vue')
   },
   {

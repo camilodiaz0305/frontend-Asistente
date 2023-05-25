@@ -22,6 +22,7 @@
 import axios from 'axios'
 
 export default {
+    
     data() {
         return {
             nombre: "",
@@ -29,8 +30,7 @@ export default {
         }
     },
     mounted: function () {
-        let vue = this
-        axios.get('/')
+        let vue = this.axios.get('/')
         .then(function(response) {
             // handle success
             console.log(response.data[0]);

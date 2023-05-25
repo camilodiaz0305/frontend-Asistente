@@ -8,12 +8,12 @@
       <router-link to="/Register">Register</router-link>
     </div>
     <div>
-      <img alt="Vue logo" src="../assets/sun-sun-ray-icon-transparent-free.png">
+      <img alt="Vue logo" src="../assets/sun-sun-ray-icon-transparent-free.png" class="logo">
     </div>
-    
-    <h1>Hola Bogota</h1>
-    <h1>la temperatura es {{ temperatura }}</h1>
-
+    <form class="cuadro" method="post">
+      <h1 class="bienvenida">Bienvenido a nuestra página</h1>
+      <h1>la temperatura es {{ temperatura }}</h1>
+    </form>
   </div>
 </template>
 
@@ -31,22 +31,42 @@ export default Vue.extend({
 </script>
 
 <style>
+.home{
+  background-color: #78729e42;
+  padding: 18px;
+}
+.bienvenida{
+  color: #16814f;
+}
+.cuadro {
+  border: 1px solid #c2bdc1;
+  padding: 2px;
+  margin: 2em 36em;
+  border-radius: 3px;
+}
+.logo{
+  height: 300px;
+  width: 300px;
+}
 #Sesion{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: right;
   color: #27264d;
-  padding: 20px;
+  padding-right: 50px;
+  font-size: 20px;
 }
 #Cuenta{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: right;
-  color: #09d124;
+  color: #119e248a;
   font-weight: bold;
-  padding: 30px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  font-size: 20px;
 }
 </style>
 

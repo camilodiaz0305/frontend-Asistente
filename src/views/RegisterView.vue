@@ -23,7 +23,7 @@
                 <p1 id="falla">Las claves son distintas!</p1>
             </div>
             <div>
-                <button type="submit" class=button v-on:click="send()">Registrarse</button>
+                <button id="miBoton" type="submit" class=button v-on:click="send()">Registrarse</button>
             </div>
         </form>
     </div>
@@ -32,9 +32,11 @@
 <script>
 import axios from 'axios'
 
+//let botons = document.getElementById('miBoton');
+//botons.setAttribute('disabled', true);
+
 export default {
     data() {
-        
         return {
             nombre: "",
             clave: "",
@@ -42,8 +44,7 @@ export default {
         }
     },
     mounted: function () {
-        let vue = this
-        axios.get('/')
+        let vue = this.axios.get('/')
         .then(function(response) {
             // handle success
             console.log(response.data[0]);
@@ -60,8 +61,9 @@ export default {
         send(){
             var payload = {
                 user: this.nombre,
-                pass: this.clave,
+                pass: this.clave
             }
+            axios.post('/',payload)
             alert("Envio al back correcto")
         }
     }
