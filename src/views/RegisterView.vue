@@ -13,7 +13,7 @@
                 <input type="password" pattern=".{6,}" class=input-clave1 v-model="clave" placeholder="Digite su clave">
             </div>
             <div id="pad3">
-                <p1 id="clave2">Confirmación: </p1>
+                <p1 id="clave2">Confirme: </p1>
                 <input type="password" pattern=".{6,}" class=input-clave2 v-model="clave2" placeholder="Confirme su clave">
             </div>
             <div v-if="clave==clave2">
@@ -138,7 +138,7 @@ export default {
 #clave2 {
     vertical-align: auto;
     font-size: 20px;
-    padding: 20px;
+    padding: 5px;
 }
 
 .cuadro {

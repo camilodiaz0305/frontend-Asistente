@@ -5,14 +5,17 @@
             <h2>Digite su nombre de usuario y clave</h2>
             <div id="pad">
                 <p1 id="user">Usuario: </p1>
-                <input type="text" class = input-user v-model="nombre" placeholder="Digite su nombre">
+                <input type="text" class=input-user v-model="nombre" placeholder="Digite su nombre">
             </div>
+
             <div id="pad2">
                 <p1 id="clave">Clave: </p1>
-                <input type="password" pattern=".{6,}" class = input-clave v-model="clave" placeholder="Digite su clave">
+                <input type="password" pattern=".{6,}" class=input-clave v-model="password" placeholder="Digite su clave">
+                <i :class="eyeIconClass" @click="togglePasswordVisibility"></i>
             </div>
+
             <div>
-                <button type="submit" class = button>Ingresar</button>
+                <button type="submit" class=button>Ingresar</button>
             </div>
         </form>
     </div>
@@ -21,86 +24,104 @@
 <script>
 import axios from 'axios'
 
+
 export default {
-    
+
     data() {
         return {
             nombre: "",
-            clave: ""
+            password: "",
+            showPassword: false
         }
     },
     mounted: function () {
         let vue = this.axios.get('/')
-        .then(function(response) {
-            // handle success
-            console.log(response.data[0]);
-            var datos = response.data[0]
-            vue.direccion = datos.address_1
-            vue.nombre = datos.name
-        })
-        .catch(function(error) {
-            // handle error
-            console.log(error);
-        })
+            .then(function (response) {
+                // handle success
+                console.log(response.data[0]);
+                var datos = response.data[0]
+                vue.direccion = datos.address_1
+                vue.nombre = datos.name
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
     },
-    methods:{
-        send(){
+    computed: {
+        eyeIconClass() {
+            return this.showPassword ? 'Hide' : 'Show';
+        }
+    },
+    methods: {
+        send() {
             var payload = {
                 user: this.nombre,
-                pass: this.clave
+                pass: this.password
             }
             alert("Envio al back correcto")
+        },
+        togglePasswordVisibility() {
+            this.showPassword = !this.showPassword;
         }
     }
 }
 </script>
 
 <style>
-.cuadro{
+.cuadro {
     border: 1px solid #d3ced2;
     padding: 20px;
     margin: 2em 35em;
     text-align: center;
     border-radius: 5px;
 }
-#title{
+
+#title {
     color: #288116;
 }
-.input-user{
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #27264d;
-  padding: 10px;
-  font-size: 20px;
-  height: 5px;
+
+.input-user {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #27264d;
+    padding: 10px;
+    font-size: 20px;
+    height: 5px;
 }
-.input-clave{
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #27264d;
-  padding: 10px;
-  font-size: 20px;
-  height: 5px;
+
+.input-clave {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #27264d;
+    padding: 10px;
+    font-size: 20px;
+    height: 5px;
 }
-#user{
+
+#user {
     font-size: 20px;
     padding: 20px;
 }
-#clave{
+
+#clave {
     font-size: 20px;
     padding: 20px;
 }
-#pad{
+
+#pad {
     padding: 10px;
 }
-#pad2{
+
+#pad2 {
     padding: 10px;
 }
-.button{
+
+.button {
     border: none;
     color: white;
     padding: 15px 32px;
@@ -111,5 +132,4 @@ export default {
     margin: 4px 2px;
     cursor: pointer;
     background-color: #008CBA;
-}
-</style>
+}</style>
