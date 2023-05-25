@@ -18,18 +18,41 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script>
+import axios from 'axios'
 
-export default Vue.extend({
-  data(){
-    return {
-      nombre: '',
-      clave: ''
+export default {
+    data() {
+        return {
+            nombre: "",
+            clave: ""
+        }
+    },
+    mounted: function () {
+        let vue = this
+        axios.get('/')
+        .then(function(response) {
+            // handle success
+            console.log(response.data[0]);
+            var datos = response.data[0]
+            vue.direccion = datos.address_1
+            vue.nombre = datos.name
+        })
+        .catch(function(error) {
+            // handle error
+            console.log(error);
+        })
+    },
+    methods:{
+        send(){
+            var payload = {
+                user: this.nombre,
+                pass: this.clave
+            }
+            alert("Envio al back correcto")
+        }
     }
-  }
-});
+}
 </script>
 
 <style>
