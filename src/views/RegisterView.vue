@@ -4,6 +4,7 @@
 
         <form class="cuadro" method="post">
             <h2>Cree su cuenta:</h2>
+        
             <div id="pad">
                 <p1 id="user">Usuario: </p1>
                 <input type="text" class=input-user v-model="nombre" placeholder="Digite su nombre">
@@ -12,6 +13,7 @@
                 <p1 id="email">Correo: </p1>
                 <input type="text" class=input-email v-model="correo" placeholder="Ingrese su correo">
             </div>
+            <h2 id="req">Ingrese una contraseña de mínimo 8 digitos</h2>
             <div id="pad2">
                 <p1 id="clave1">Clave: </p1>
                 <input type="password" pattern=".{8,}" class=input-clave1 v-model="clave" placeholder="Digite su clave">
@@ -86,6 +88,10 @@ export default {
 }
 #falla{
     color: #ff0000;
+}
+#req{
+    color: #7c0000;
+    font-size: 15px;
 }
 .input-user {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -174,8 +180,8 @@ export default {
 .cuadro {
     border: 1px solid #d3ced2;
     padding: 2px;
-    margin: 2em 36em;
-    border-radius: 3px;
+    margin: 2em 35em;
+    border-radius: 10px;
 }
 
 #pad {
