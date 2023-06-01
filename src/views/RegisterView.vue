@@ -44,7 +44,7 @@ export default {
         }
     },
     mounted: function () {
-        let vue = this.axios.get('/')
+        let vue = this.axios.get('http://localhost:3100/register')
         .then(function(response) {
             // handle success
             console.log(response.data[0]);
@@ -63,7 +63,7 @@ export default {
                 user: this.nombre,
                 pass: this.clave
             }
-            axios.post('/',payload)
+            axios.post('http://localhost:3100/register',payload)
             alert("Envio al back correcto")
         }
     }

@@ -39,7 +39,7 @@ export default Vue.extend({
   color: #16814f;
 }
 .cuadro {
-  border: 1px solid #c2bdc1;
+  border: 1px solid #9b9399;
   padding: 2px;
   margin: 2em 36em;
   border-radius: 3px;

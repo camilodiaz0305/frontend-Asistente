@@ -35,7 +35,7 @@ export default {
         }
     },
     mounted: function () {
-        let vue = this.axios.get('/')
+        let vue = this.axios.get('http://localhost:3100/login')
             .then(function (response) {
                 // handle success
                 console.log(response.data[0]);
@@ -59,6 +59,7 @@ export default {
                 user: this.nombre,
                 pass: this.password
             }
+            axios.post('http://localhost:3100/login',payload)
             alert("Envio al back correcto")
         },
         togglePasswordVisibility() {
