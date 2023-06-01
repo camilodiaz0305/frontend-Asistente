@@ -10,7 +10,7 @@
 
             <div id="pad2">
                 <p1 id="clave">Clave: </p1>
-                <input type="password" pattern=".{6,}" class=input-clave v-model="password" placeholder="Digite su clave">
+                <input type="password" pattern=".{8,}" class=input-clave v-model="password" placeholder="Digite su clave">
                 <i :class="eyeIconClass" @click="togglePasswordVisibility"></i>
             </div>
 

@@ -8,22 +8,24 @@
                 <p1 id="user">Usuario: </p1>
                 <input type="text" class=input-user v-model="nombre" placeholder="Digite su nombre">
             </div>
+            <div id="pade">
+                <p1 id="email">Correo: </p1>
+                <input type="text" class=input-email v-model="correo" placeholder="Ingrese su correo">
+            </div>
             <div id="pad2">
                 <p1 id="clave1">Clave: </p1>
-                <input type="password" pattern=".{6,}" class=input-clave1 v-model="clave" placeholder="Digite su clave">
+                <input type="password" pattern=".{8,}" class=input-clave1 v-model="clave" placeholder="Digite su clave">
             </div>
             <div id="pad3">
                 <p1 id="clave2">Confirme: </p1>
-                <input type="password" pattern=".{6,}" class=input-clave2 v-model="clave2" placeholder="Confirme su clave">
+                <input type="password" pattern=".{8,}" class=input-clave2 v-model="clave2" placeholder="Confirme su clave">
             </div>
             <div v-if="clave==clave2">
                 <p1 id="exito">Las claves coinciden!</p1>
+                <button id="miBoton" type="submit" class=button v-on:click="send()">Registrarse</button>
             </div>
             <div v-else>
                 <p1 id="falla">Las claves son distintas!</p1>
-            </div>
-            <div>
-                <button id="miBoton" type="submit" class=button v-on:click="send()">Registrarse</button>
             </div>
         </form>
     </div>
@@ -39,6 +41,7 @@ export default {
     data() {
         return {
             nombre: "",
+            correo: "",
             clave: "",
             clave2: ""
         }
@@ -61,11 +64,13 @@ export default {
         send(){
             var payload = {
                 user: this.nombre,
+                mail: this.correo,
                 pass: this.clave
             }
             axios.post('http://localhost:3100/register',payload)
             alert("Envio al back correcto")
         }
+        
     }
 }
 </script>
@@ -94,12 +99,24 @@ export default {
     align-items: center;
 }
 
+.input-email {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #27264d;
+    padding: 10px;
+    font-size: 20px;
+    height: 5px;
+    align-items: center;
+}
+
 .input-clave1 {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #000000;
+    color: #27264d;
     padding: 10px;
     font-size: 20px;
     height: 5px;
@@ -111,7 +128,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #000000;
+    color: #27264d;
     padding: 10px;
     font-size: 20px;
     height: 5px;
@@ -129,16 +146,29 @@ export default {
     padding: 10px;
 }
 
+#email {
+    font-size: 20px;
+    text-align: left;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #27264d;
+    padding: 15px;
+}
+
 #clave1 {
     text-align: left;
     font-size: 20px;
     padding: 20px;
+    color: #27264d;
 }
 
 #clave2 {
     vertical-align: auto;
     font-size: 20px;
     padding: 5px;
+    color: #27264d;
 }
 
 .cuadro {
@@ -150,6 +180,10 @@ export default {
 
 #pad {
     padding: 10px;
+}
+
+#pade {
+    padding: 15px;
 }
 
 #pad2 {
